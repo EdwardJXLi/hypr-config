@@ -1,199 +1,187 @@
 {
-	"layer": "top",
-	"position": "top",
+  "layer": "top",
+  "position": "top",
 
-	"modules-left": [
-		"hyprland/workspaces",
-		"custom/arrow_workspaces_background",
-		"hyprland/window"
-	],
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/arrow_workspaces_background",
+    "hyprland/window",
+  ],
 
-	"modules-right": [
-		"custom/arrow_sound_background",
-		"pulseaudio",
-		"custom/arrow_network_sound",
-		"network",
-		"custom/arrow_memory_network",
-		"memory",
-		"custom/arrow_cpu_memory",
-		"cpu",
-		"custom/arrow_temp_cpu",
-		"temperature",
-		"custom/arrow_battery_temp",
-		"battery",
-		"custom/arrow_date_battery",
-		"tray",
-		"clock#date",
-		"custom/arrow_time_date",
-		"clock#time"
-	],
+  "modules-right": [
+    "custom/arrow_sound_background",
+    "pulseaudio",
+    "custom/arrow_network_sound",
+    "network",
+    "custom/arrow_memory_network",
+    "memory",
+    "custom/arrow_cpu_memory",
+    "cpu",
+    "custom/arrow_temp_cpu",
+    "temperature",
+    "custom/arrow_battery_temp",
+    "battery",
+    "custom/arrow_date_battery",
+    "tray",
+    "clock#date",
+    "custom/arrow_time_date",
+    "clock#time",
+  ],
 
-	// Modules
+  // Modules
 
-	"battery": {
-		"interval": 10,
-		"states": {
-			"warning": 30,
-			"critical": 15
-		},
-		"format-time": "{H}:{M:02}",
-		"format": "{icon}   {capacity}% ({time})",
-		"format-charging": "   {capacity}% ({time})",
-		"format-charging-full": "   {capacity}%",
-		"format-full": "{icon}   {capacity}%",
-		"format-alt": "{icon}   {power}W",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		],
-		"tooltip": false
-	},
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format-time": "{H}:{M:02}",
+    "format": "{icon}   {capacity}% ({time})",
+    "format-charging": "   {capacity}% ({time})",
+    "format-charging-full": "   {capacity}%",
+    "format-full": "{icon}   {capacity}%",
+    "format-alt": "{icon}   {power}W",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false,
+  },
 
-	"clock#time": {
-		"interval": 10,
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
+  "clock#time": {
+    "interval": 10,
+    "format": "{:%H:%M}",
+    "tooltip": false,
+  },
 
-	"clock#date": {
-		"interval": 20,
-		"format": "{:%e %b %Y}",
-		"tooltip": false
-		//"tooltip-format": "{:%e %B %Y}"
-	},
+  "clock#date": {
+    "interval": 20,
+    "format": "{:%e %b %Y}",
+    "tooltip": false,
+    //"tooltip-format": "{:%e %B %Y}"
+  },
 
-	"cpu": {
-		"interval": 5,
-		"tooltip": false,
-		"format": "   {usage}%",
-		"format-alt": "   {load}",
-		"states": {
-			"warning": 70,
-			"critical": 90
-		}
-	},
+  "cpu": {
+    "interval": 5,
+    "tooltip": false,
+    "format": "   {usage}%",
+    "format-alt": "   {load}",
+    "states": {
+      "warning": 70,
+      "critical": 90,
+    },
+  },
 
-	"memory": {
-		"interval": 5,
-		"format": "  {used:0.1f}G/{total:0.1f}G",
-		"states": {
-			"warning": 50,
-			"critical": 75
-		},
-		"tooltip": false
-	},
+  "memory": {
+    "interval": 5,
+    "format": "  {used:0.1f}G/{total:0.1f}G",
+    "states": {
+      "warning": 50,
+      "critical": 75,
+    },
+    "tooltip": false,
+  },
 
-	"network": {
-		"interval": 5,
-		"format-wifi": "    {essid} ({signalStrength}%)",
-		"format-ethernet": "    {ifname}",
-		"format-disconnected": "No connection",
-		"format-alt": "    {ipaddr}/{cidr}",
-		"tooltip": false
-	},
+  "network": {
+    "interval": 5,
+    "format-wifi": "    {essid} ({signalStrength}%)",
+    "format-ethernet": "    {ifname}",
+    "format-disconnected": "No connection",
+    "format-alt": "    {ipaddr}/{cidr}",
+    "tooltip": false,
+  },
 
-	"hyprland/mode": {
-		"format": "{}",
-		"tooltip": false
-	},
+  "hyprland/mode": {
+    "format": "{}",
+    "tooltip": false,
+  },
 
-	"hyprland/window": {
-		"format": "{}",
-		"max-length": 30,
-		"tooltip": false
-	},
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 30,
+    "tooltip": false,
+  },
 
-	"hyprland/workspaces": {
-		"disable-scroll-wraparound": true,
-		"smooth-scrolling-threshold": 4,
-		"enable-bar-scroll": true,
-		"format": "{name}"
-	},
+  "hyprland/workspaces": {
+    "disable-scroll-wraparound": true,
+    "smooth-scrolling-threshold": 4,
+    "enable-bar-scroll": true,
+    "format": "{name}",
+  },
 
-	"pulseaudio": {
-		"format": "{icon}    {volume}%",
-		"format-bluetooth": "{icon}    {volume}%",
-		"format-muted": "",
-		"format-icons": {
-			"headphone": "",
-			"hands-free": "",
-			"headset": "",
-			"phone": "",
-			"portable": "",
-			"car": "",
-			"default": ["", ""]
-		},
-		"scroll-step": 1,
-		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"tooltip": false
-	},
+  "pulseaudio": {
+    "format": "{icon}    {volume}%",
+    "format-bluetooth": "{icon}    {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""],
+    },
+    "scroll-step": 1,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false,
+  },
 
-	"temperature": {
-		"critical-threshold": 90,
-		"interval": 5,
-		"format": "{icon}  {temperatureC}°",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		],
-		"tooltip": false
-	},
+  "temperature": {
+    "critical-threshold": 90,
+    "interval": 5,
+    "format": "{icon}  {temperatureC}°",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false,
+  },
 
-	"tray": {
-		"icon-size": 18
-		//"spacing": 10
-	},
+  "tray": {
+    "icon-size": 18,
+    //"spacing": 10
+  },
 
-	"custom/arrow_time_date": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_time_date": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_date_battery": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_date_battery": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_battery_temp": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_battery_temp": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_temp_cpu": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_temp_cpu": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_cpu_memory": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_cpu_memory": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_memory_network": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_memory_network": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_network_sound": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_network_sound": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_sound_background": {
-		"format": "",
-		"tooltip": false
-	},
+  "custom/arrow_sound_background": {
+    "format": "",
+    "tooltip": false,
+  },
 
-	"custom/arrow_workspaces_background": {
-		"format": "",
-		"tooltip": false
-	}
+  "custom/arrow_workspaces_background": {
+    "format": "",
+    "tooltip": false,
+  },
 }
 
 // vi:ft=jsonc
