@@ -121,8 +121,8 @@
     background: @background;
     color: @white;
     font-family:
-        JetBrains Mono,
-        Siji;
+        JetBrainsMono Nerd Font,
+        JetBrains Mono;
     font-size: 11pt;
     /*font-weight: bold;*/
 }
