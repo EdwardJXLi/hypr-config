@@ -72,7 +72,7 @@
 
   "memory": {
     "interval": 5,
-    "format": "  {used:0.1f}G/{total:0.1f}G  󰓡 {swapUsed:0.1f}G/{swapTotal:0.1f}G",
+    "format": "   {used:0.1f}G/{total:0.1f}G   󰓡  {swapUsed:0.1f}G/{swapTotal:0.1f}G",
     "states": {
       "critical": 80,
     },
@@ -81,7 +81,7 @@
 
   "network": {
     "interval": 5,
-    "format-wifi": "    {essid} ({signalStrength}%)",
+    "format-wifi": "   {essid} ({signalStrength}%)",
     "format-ethernet": "    {ifname}",
     "format-disconnected": "No connection",
     "format-alt": "    {ipaddr}/{cidr}",
@@ -107,8 +107,8 @@
   },
 
   "pulseaudio": {
-    "format": "{icon}    {volume}%",
-    "format-bluetooth": "{icon}    {volume}%",
+    "format": "{icon}   {volume}%",
+    "format-bluetooth": "{icon}   {volume}%",
     "format-muted": "",
     "format-icons": {
       "headphone": "",
