@@ -113,7 +113,7 @@
     padding: 0;
     box-shadow: none;
     text-shadow: none;
-    icon-shadow: none;
+    -gtk-icon-shadow: none;
 }
 
 /* The whole bar */
@@ -212,6 +212,11 @@
 #window {
     margin-right: 35pt;
     margin-left: 35pt;
+}
+
+#window label {
+    font-size: 10pt;
+    min-height: 0;
 }
 
 #pulseaudio {
