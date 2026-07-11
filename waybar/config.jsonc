@@ -111,6 +111,8 @@
     "format": "{icon}   {volume}%{format_source}",
     "format-bluetooth": "{icon}   {volume}%{format_source}",
     "format-muted": "  Muted{format_source}",
+    "format-alt": "{icon}   {desc}",
+    "format-alt-click": 1,
     "format-source": "",
     "format-source-muted": "     Mic muted",
     "format-icons": {
@@ -123,7 +125,6 @@
       "default": ["", ""],
     },
     "scroll-step": 1,
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "tooltip": false,
   },
 
