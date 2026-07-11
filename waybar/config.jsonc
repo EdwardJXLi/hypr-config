@@ -108,9 +108,11 @@
   },
 
   "pulseaudio": {
-    "format": "{icon}   {volume}%",
-    "format-bluetooth": "{icon}   {volume}%",
-    "format-muted": "   Muted",
+    "format": "{icon}   {volume}%{format_source}",
+    "format-bluetooth": "{icon}   {volume}%{format_source}",
+    "format-muted": "  Muted{format_source}",
+    "format-source": "",
+    "format-source-muted": "     Mic muted",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
