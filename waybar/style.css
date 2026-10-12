@@ -148,7 +148,6 @@
 
 /* Each critical module */
 #mode,
-#memory.critical,
 #cpu.critical,
 #temperature.critical,
 #battery.critical.discharging {
