@@ -83,9 +83,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("/home/hydra/.local/bin/openwhispr")
 
     -- Export Wayland env to systemd/dbus and bring up the graphical session so xdg-desktop-portal starts
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
-    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
-    hl.exec_cmd("systemctl --user start hyprland-session.target")
+    hl.exec_cmd(
+    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE && systemctl --user start hyprland-session.target")
 
     -- Fix some stupid race condition with one of the window rules
     hl.exec_cmd("sleep 0.5 && hyprctl reload")
