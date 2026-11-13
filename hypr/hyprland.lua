@@ -67,7 +67,8 @@ local menu = "vicinae toggle"
 -- ################
 
 hl.on("hyprland.start", function()
-    -- hl.exec_cmd(terminal)
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark")
     hl.exec_cmd("kwalletd6")
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
     -- waybar is started by waybar.service (auto-restarts on crash) via hyprland-session.target
@@ -96,8 +97,6 @@ end)
 -- ############################
 
 -- Dark Mode
-hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
-hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 
