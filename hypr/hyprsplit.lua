@@ -253,7 +253,7 @@ function hyprsplit.dsp.focus(args)
 
             -- check for workspace_back_and_forth
             if
-                hl.get_config("binds.workspace_back_and_forth")
+                hl.get_config("binds.workspace_back_and_forth") ~= 0
                 and active_monitor
                 and active_monitor.active_workspace
             then
