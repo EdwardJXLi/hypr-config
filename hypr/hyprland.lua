@@ -1,19 +1,13 @@
--- This is an example Hyprland Lua config file.
--- Refer to the wiki for more information.
--- https://wiki.hypr.land/Configuring/
-
--- Please note not all available settings / options are set here.
--- For a full list, see the wiki
-
--- You can split this configuration into multiple files
--- Create your files separately and then require them in this file like this:
--- require("myColors")
+-- ###############################
+-- ## PERSONAL HYPRLAND CONFIG ###
+-- ###############################
 
 
---###############
---## PLUGINS  ###
---###############
+-- ###############
+-- ## PLUGINS  ###
+-- ###############
 
+-- Better multi-window workflow
 local hs = require("hyprsplit")
 hs.config({
     num_workspaces = 10,
@@ -21,6 +15,7 @@ hs.config({
 })
 
 -- hyprpm loads hyprbars after startup and reloads the config when it is ready.
+-- Adds draggable bars to the top of windowed apps
 if hl.plugin.hyprbars then
     hl.config({
         plugin = {
@@ -39,46 +34,40 @@ if hl.plugin.hyprbars then
 end
 
 
---###############
---## MONITORS ###
---###############
+-- ###############
+-- ## MONITORS ###
+-- ###############
 
--- See https://wiki.hypr.land/Configuring/Monitors/
 -- hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
+-- Internal Display
 hl.monitor({ output = "eDP-1", mode = "1920x1200@60.0", position = "2160x1850", scale = 1.0 })
+-- Generic External Display
 hl.monitor({ output = "HDMI-A-1", mode = "3840x2160@60.0", position = "4080x1610", scale = 1.0 })
+-- Home Monitors
 hl.monitor({ output = "desc:LG Electronics LG ULTRAFINE 202NTKFDW837", mode = "3840x2160@60.0", position = "4080x1024", scale = 1.0 })
 hl.monitor({ output = "desc:Dell Inc. DELL S2725QS 6GSHT84", mode = "3840x2160@60.0", position = "0x0", scale = 1.0, transform = 1 })
-hl.monitor({ output = "desc:BOE Display 0x01010120", mode = "2160x1440@60.0", position = "0x1610", scale = 1.0 })
-hl.monitor({ output = "desc:Invalid Vendor Codename - RTK 0x1920 0x19201200", mode = "1920x1200@59.95", position = "4080x1850", scale = 1.0 })
+-- Portable External Monitor
+hl.monitor({ output = "desc:Invalid Vendor Codename - RTK 0x1920 0x19201200", mode = "1920x1200@59.95", position = "4080x1850", scale = 1.0, transform = 3 })
+-- hl.monitor({ output = "desc:Invalid Vendor Codename - RTK 0x1920 0x19201200", mode = "1920x1200@59.95", position = "4080x1300", scale = 1.0 })
 
--- Work Monitors
-hl.monitor({ output = "desc:Dell Inc. DELL U2723QE 6B0LF34", mode = "3840x2160@60.0", position = "1594x122", scale = 1.25 })
 
---##################
---## MY PROGRAMS ###
---##################
+-- ##################
+-- ## MY PROGRAMS ###
+-- ##################
 
--- See https://wiki.hypr.land/Configuring/Keywords/
-
--- Set programs that you use
 local terminal = "kitty"
 local browser = "firefox"
-local browser_private = "firefox --private-window"
+local browserPrivate = "firefox --private-window"
 local fileManager = "dolphin"
--- local menu = "wofi --show drun -D key_expand=Tab"
 local menu = "vicinae toggle"
 
---################s
---## AUTOSTART ###
---################
 
--- Autostart necessary processes (like notifications daemons, status bars, etc.)
--- Or execute your favorite apps at launch like this:
+-- ################
+-- ## AUTOSTART ###
+-- ################
 
 hl.on("hyprland.start", function()
     -- hl.exec_cmd(terminal)
-    -- hl.exec_cmd("waybar & hyprpaper & firefox")
     hl.exec_cmd("kwalletd6")
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
     -- waybar is started by waybar.service (auto-restarts on crash) via hyprland-session.target
@@ -101,27 +90,33 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("sleep 0.5 && hyprctl reload")
 end)
 
---############################
---## ENVIRONMENT VARIABLES ###
---############################
 
--- See https://wiki.hypr.land/Configuring/Environment-variables/
+-- ############################
+-- ## ENVIRONMENT VARIABLES ###
+-- ############################
 
+-- Dark Mode
+hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
+hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+
+-- Fixes cursor size in electron apps
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
--- # Fixes KDE app menus
+-- Fixes KDE app menus
 -- hl.env("XDG_MENU_PREFIX", "arch-")
 
--- # Make home-manager / nix profile apps visible to all Hyprland-launched apps
+-- Make home-manager / nix profile apps visible to all Hyprland-launched apps
 -- hl.env("XDG_DATA_DIRS", "/home/hydra/.nix-profile/share:/nix/var/nix/profiles/default/share:/usr/local/share:/usr/share")
 -- hl.env("NIX_PROFILES", "/nix/var/nix/profiles/default /home/hydra/.nix-profile")
 -- hl.env("XDG_CONFIG_DIRS", "/etc/xdgnix/var/nix/profiles/default/etc/xdg:/home/hydra/.nix-profile/etc/xdg")
 
 
---##################
---## PERMISSIONS ###
---##################
+-- ##################
+-- ## PERMISSIONS ###
+-- ##################
 
 -- See https://wiki.hypr.land/Configuring/Permissions/
 -- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
@@ -136,32 +131,23 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 
 
---####################
---## LOOK AND FEEL ###
---####################
-
--- Refer to https://wiki.hypr.land/Configuring/Variables/
+-- ####################
+-- ## LOOK AND FEEL ###
+-- ####################
 
 -- https://wiki.hypr.land/Configuring/Variables/#general
 hl.config({
     general = {
         gaps_in = 5,
         gaps_out = 10,
-
         border_size = 2,
 
-        -- https://wiki.hypr.land/Configuring/Variables/#variable-types for info about colors
         ["col.active_border"] = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
         ["col.inactive_border"] = "rgba(595959aa)",
 
-        -- Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = true,
-
-        -- Please see https://wiki.hypr.land/Configuring/Tearing/ before you turn this on
         allow_tearing = false,
-
         layout = "dwindle",
-
         snap = {
             enabled = true,
         },
@@ -173,24 +159,18 @@ hl.config({
     decoration = {
         rounding = 0,
         -- rounding_power = 2,
-
-        -- Change transparency of focused and unfocused windows
         active_opacity = 1.0,
         inactive_opacity = 0.975,
-
         shadow = {
             enabled = true,
             range = 4,
             render_power = 3,
             color = "rgba(1a1a1aee)",
         },
-
-        -- https://wiki.hypr.land/Configuring/Variables/#blur
         blur = {
             enabled = true,
             size = 3,
             passes = 1,
-
             vibrancy = 0.1696,
         },
     },
@@ -242,30 +222,22 @@ hl.workspace_rule({ workspace = "special:magic", gaps_out = 100 })
 -- See https://wiki.hypr.land/Configuring/Dwindle-Layout/ for more
 hl.config({
     dwindle = {
-        preserve_split = true, -- You probably want this
-    },
-})
-
--- See https://wiki.hypr.land/Configuring/Master-Layout/ for more
-hl.config({
-    master = {
-        new_status = "master",
+        preserve_split = true,
     },
 })
 
 -- https://wiki.hypr.land/Configuring/Variables/#misc
 hl.config({
     misc = {
-        force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
+        disable_hyprland_logo = true,
         middle_click_paste = false,
     },
 })
 
 
---############
---## INPUT ###
---############
+-- ############
+-- ## INPUT ###
+-- ############
 
 -- https://wiki.hypr.land/Configuring/Variables/#input
 hl.config({
@@ -277,8 +249,8 @@ hl.config({
         kb_rules = "",
 
         follow_mouse = 2,
+        sensitivity = -0.1,
 
-        sensitivity = -0.1, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
             natural_scroll = false,
@@ -297,22 +269,12 @@ hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 4, direction = "down", action = "close", mods = "ALT" })
 hl.gesture({ fingers = 4, direction = "up", action = "fullscreen", mods = "SUPER", scale = 1.5 })
 
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Keywords/#per-device-input-configs for more
-hl.device({
-    name = "epic-mouse-v1",
-    sensitivity = -0.5,
-})
 
+-- ##################
+-- ## KEYBINDINGS ###
+-- ##################
 
---##################
---## KEYBINDINGS ###
---##################
-
--- See https://wiki.hypr.land/Configuring/Keywords/
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-
--- Example binds, see https://wiki.hypr.land/Configuring/Binds/ for more
+local mainMod = "SUPER"
 
 -- Custom keybinds
 hl.bind("CONTROL + space", hl.dsp.exec_cmd(menu))
@@ -342,7 +304,7 @@ hl.bind(mainMod .. " + SHIFT + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + return", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + CTRL + SHIFT + return", hl.dsp.exec_cmd(browser_private))
+hl.bind(mainMod .. " + CTRL + SHIFT + return", hl.dsp.exec_cmd(browserPrivate))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
@@ -392,10 +354,10 @@ hl.bind(mainMod .. " + bracketright", hl.dsp.focus({ monitor = "r" }))
 hl.bind(mainMod .. " + CTRL + left", hl.dsp.focus({ monitor = "l" }))
 hl.bind(mainMod .. " + CTRL + right", hl.dsp.focus({ monitor = "r" }))
 
--- Misc keybinds for handing multiple monitors
+-- Collect windows from disconnected monitors
 hl.bind(mainMod .. " + SHIFT + backslash", hs.dsp.grab_rogue_windows())
 
--- Example special workspace (scratchpad)
+-- Scratchpad
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
@@ -421,25 +383,20 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
--- Lock on lid close
-hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock --immediate & systemctl suspend"), { locked = true })
+-- Suspend on lid close
+hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
 
---#############################
---## WINDOWS AND WORKSPACES ###
---#############################
 
--- See https://wiki.hypr.land/Configuring/Window-Rules/ for more
--- See https://wiki.hypr.land/Configuring/Workspace-Rules/ for workspace rules
-
--- Example windowrule
--- hl.window_rule({ name = "kitty-float", match = { class = "^(kitty)$", title = "^(kitty)$" }, float = true })
+-- #############################
+-- ## WINDOWS AND WORKSPACES ###
+-- #############################
 
 -- Ignore maximize requests from apps.
 hl.window_rule({
     match = {
         class = ".*",
     },
-    name = "windowrule-2",
+    name = "ignore-maximize",
     suppress_event = "maximize",
 })
 
@@ -453,7 +410,7 @@ hl.window_rule({
         fullscreen = false,
         pin = false,
     },
-    name = "windowrule-3",
+    name = "xwayland-drag-fix",
     no_focus = true,
 })
 
@@ -481,7 +438,7 @@ hl.window_rule({
     match = {
         title = "^(HyprEmoji)$",
     },
-    name = "hypremoji-float",
+    name = "hypremoji",
     float = true,
     ["hyprbars:no_bar"] = hl.plugin.hyprbars ~= nil or nil,
 })
@@ -494,7 +451,7 @@ hl.window_rule({
     move = "(cursor_x-(window_w*0.5)) (cursor_y-(window_h*0.05))",
 })
 
--- OpenWhispr disable voice recorder overlay
+-- OpenWhispr recorder decorations
 hl.window_rule({
     match = {
         class = "open-whispr",
@@ -503,20 +460,6 @@ hl.window_rule({
     name = "openwhispr-recorder",
     ["hyprbars:no_bar"] = hl.plugin.hyprbars ~= nil or nil,
     no_blur = true,
-    no_anim = true,
     border_size = 0,
     no_shadow = true,
-    -- Uncomment this to hide the popup entirely
-    -- workspace = "special:whispr silent",
 })
-
---##################
---## DARK MODE ###
---##################
-
-hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
-hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark")
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
-hl.env("QT_QPA_PLATFORM", "wayland;xcb")
-hl.env("XCURSOR_SIZE", "24")
-hl.env("XCURSOR_PATH", "/usr/share/icons")
