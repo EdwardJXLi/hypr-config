@@ -256,7 +256,8 @@ hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -a -f hex"))
 
 -- Lock screen
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock --immediate & systemctl suspend"))
+-- hypridle locks the session before suspend.
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("systemctl suspend"))
 
 -- Helpers
 hl.bind(mainMod .. " + CTRL + ALT + delete", hl.dsp.exit())
