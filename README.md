@@ -6,7 +6,6 @@ Personal [Hyprland](https://hypr.land/)/[Wayland](https://wayland.freedesktop.or
 
 - `hypr/`
   - `hyprland.lua` - main config (keybinds, window rules, startup, etc.)
-  - `hyprland.conf` - legacy fallback
   - `hypridle.conf` - idle and lock config
   - `hyprlock.conf` - lock screen config
   - `hyprpaper.conf` - wallpaper config
