@@ -384,14 +384,15 @@ hl.window_rule({
     workspace = "empty",
 })
 
--- Disable bars by default
-hl.window_rule({
-    match = {
-        float = false,
-    },
-    name = "no-bars",
-    ["hyprbars:no_bar"] = hl.plugin.hyprbars ~= nil or nil,
-})
+if hl.plugin.hyprbars then
+    hl.window_rule({
+        match = {
+            float = false,
+        },
+        name = "no-bars",
+        ["hyprbars:no_bar"] = true,
+    })
+end
 
 -- Window rules for HyprEmoji
 hl.window_rule({
@@ -401,13 +402,6 @@ hl.window_rule({
     name = "hypremoji",
     float = true,
     ["hyprbars:no_bar"] = hl.plugin.hyprbars ~= nil or nil,
-})
-
-hl.window_rule({
-    match = {
-        title = "^(HyprEmoji)$",
-    },
-    name = "hypremoji-move",
     move = "(cursor_x-(window_w*0.5)) (cursor_y-(window_h*0.05))",
 })
 
