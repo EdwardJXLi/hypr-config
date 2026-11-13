@@ -28,9 +28,9 @@ if hl.plugin.hyprbars then
             },
         },
     })
-    hl.plugin.hyprbars.add_button({ bg_color = "rgb(ff4040)", fg_color = "rgb(ffffff)", size = 12, icon = "", action = "hyprctl dispatch killactive" })
-    hl.plugin.hyprbars.add_button({ bg_color = "rgb(eeee11)", fg_color = "rgb(ffffff)", size = 12, icon = "", action = "hyprctl dispatch fullscreen 1" })
-    hl.plugin.hyprbars.add_button({ bg_color = "rgb(87CEEB)", fg_color = "rgb(ffffff)", size = 12, icon = "", action = "hyprctl dispatch togglefloating" })
+    hl.plugin.hyprbars.add_button({ bg_color = "rgb(ff4040)", fg_color = "rgb(ffffff)", size = 12, icon = "", action = "hyprctl dispatch 'hl.dsp.window.close()'" })
+    hl.plugin.hyprbars.add_button({ bg_color = "rgb(eeee11)", fg_color = "rgb(ffffff)", size = 12, icon = "", action = [[hyprctl dispatch 'hl.dsp.window.fullscreen({ mode = "maximized" })']] })
+    hl.plugin.hyprbars.add_button({ bg_color = "rgb(87CEEB)", fg_color = "rgb(ffffff)", size = 12, icon = "", action = [[hyprctl dispatch 'hl.dsp.window.float({ action = "toggle" })']] })
 end
 
 
