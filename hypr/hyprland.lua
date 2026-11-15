@@ -78,8 +78,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systembus-notify")
     hl.exec_cmd("easyeffects --gapplication-service")
     hl.exec_cmd("batsignal -w 25 -c 10 -d 5")
-    hl.exec_cmd("hyprpm reload -n")
     hl.exec_cmd("hyprtab daemon")
+    hl.exec_cmd("/home/hydra/.local/bin/caffeine")
     hl.exec_cmd("/home/hydra/.local/bin/openwhispr")
 
     -- Export Wayland env to systemd/dbus and bring up the graphical session so xdg-desktop-portal starts
