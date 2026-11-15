@@ -358,6 +358,14 @@ hl.window_rule({
     suppress_event = "maximize",
 })
 
+hl.window_rule({
+    match = {
+        class = ".*",
+    },
+    name = "disable-app-drags",
+    no_xdg_drags = true,
+})
+
 -- Fix some dragging issues with XWayland
 hl.window_rule({
     match = {
